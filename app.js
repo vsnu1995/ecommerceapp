@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressHbs = require('express-handlebars');
 var index = require('./routes/index');
+var userRoutes = require('./routes/user');
 var mongoose = require('mongoose');
 var app = express();
 var session = require('express-session');
@@ -32,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/user',userRoutes);
 app.use('/', index);
 
 // catch 404 and forward to error handler
