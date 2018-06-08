@@ -9,6 +9,11 @@
   font-size: 16px;
   
 }
+.badge{
+  background-color: lightgray;
+  border-radius: 50% !important;
+
+}
 .each-item{
   padding-top: 20px;
 }

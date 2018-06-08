@@ -1,13 +1,14 @@
-module.exports = function Cart(initItems) {
-    this.items = initItems;
+module.exports = function Cart(oldCart) {
+    // console.log(oldCart);
+    this.items = oldCart.items || {};
 
-    this.totalQty = 0;
-    this.totalPrice = 0;
+    this.totalQty = oldCart.totalQty || 0;
+    this.totalPrice = oldCart.totalPrice || 0;
 
     if (this.items) {
         for (var key in this.items) {
             this.totalQty += this.items[key].qty;
-            this.totalPrice += this.items[key].qty * this.items[key].item.price;
+            this.totalPrice += this.items[key].qty * this.items[key].price;
         }
     }
 
@@ -24,6 +25,7 @@ module.exports = function Cart(initItems) {
 
     this.generateArray = function () {
         var arr = [];
+        // console.log(this);
         for (var id in this.items) {
             arr.push(this.items[id]);
         }
